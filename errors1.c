@@ -127,14 +127,14 @@ char *convert_number(long int num, int base, int flags)
  *
  * Return: Always 0;
  */
-void remove_comments(char *but)
+void remove_comments(char *buf)
 {
 	int i;
 
-	for (i = 0; but[i] != '\0'; i++)
-		if (but[i] == '#' && (!i || but[i - 1] == ' '))
+	for (i = 0; buf[i] != '\0'; i++)
+		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
 		{
-			but[i] = '\0';
+			buf[i] = '\0';
 			break;
 		}
 }
