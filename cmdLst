@@ -1,0 +1,29 @@
+/bin/ls
+echo "/bin/ls" | ./hsh
+cat cmdLst | ./hsh
+betty *.c
+ls
+ls -l
+ls -a
+env
+setenv test 789
+echo $test
+unsetenv test
+echo $test
+echo $PATH
+echo $HOME
+cd -
+pwd
+cd simple_shell
+pwd
+ls /tmp; ls /usr; ls /var
+ls /var && ls /var
+ls /var && ls /var && ls /var && ls /hbtn
+ls /var && ls /var && ls /var && ls /hbtn && ls /hbtn
+ls /var || ls /var
+ls /hbtn || ls /var
+ls /hbtn || ls /hbtn || ls /hbtn || ls /var
+ls /hbtn || ls /hbtn || ls /hbtn || ls /var || ls /var
+echo $?
+echo $$
+echo $$ # ls -la
