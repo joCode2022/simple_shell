@@ -1,4 +1,4 @@
-µ#include "shell.h"
+#include "shell.h"
 
 /**
  * input_buf - buffers chained commands
@@ -168,4 +168,3 @@ void sigintHandler(__attribute__((unused))int sig_num)
 	_puts("$ ");
 	_putchar(BUF_FLUSH);
 }
-
