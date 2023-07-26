@@ -1,75 +1,67 @@
-#include "shell.h"
+#include "my_shell.h"
 
 /**
- * _strlen - returns the length of a string
- * @s: the string whose length to check
- *
- * Return: integer length of string
+ * print_promp - prints the prompt symbol ($)
+ * If the shell is in interactive mode
+ *	prints the prompt symbol to the standard error file descriptor
  */
-int _strlen(char *s)
+void print_promp(void)
 {
-	int i = 0;
+if ((isatty(STDIN_FILENO) == 1) && (isatty(STDOUT_FILENO) == 1))
+tool.acti = 1;
+if (tool.acti)
+write(STDERR_FILENO, "$emyy ", 2);
+}
 
-	if (!s)
-		return (0);
+#include "my_shell.h"
 
-	while (*s++)
-		i++;
-	return (i);
+/**
+* _putchar - writes the character
+* @a: The character to print
+*
+* Return: On success 1.
+* On error, -1 is returned and errno set appropriately
+*/
+int _putchar(char a)
+{
+return (write(1, &a, 1));
 }
 
 /**
- * _strcmp - performs lexicogarphic comparison of two strangs.
- * @s1: the first strang
- * @s2: the second strang
- *
- * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
- */
-int _strcmp(char *s1, char *s2)
+* string_printer - prints a string
+* @a: string
+*
+* Return: number of characters
+*/
+int string_printer(char *a)
 {
-	while (*s1 && *s2)
-	{
-		if (*s1 != *s2)
-			return (*s1 - *s2);
-		s1++;
-		s2++;
-	}
-	if (*s1 == *s2)
-		return (0);
-	else
-		return (*s1 < *s2 ? -1 : 1);
+int i = 0;
+
+while (a[i] != '\0')
+{
+_putchar(a[i]);
+i++;
 }
 
-/**
- * starts_with - checks if needle starts with haystack
- * @haystack: string to search
- * @needle: the substring to find
- *
- * Return: address of next char of haystack or NULL
- */
-char *starts_with(const char *haystack, const char *needle)
-{
-	while (*needle)
-		if (*needle++ != *haystack++)
-			return (NULL);
-	return ((char *)haystack);
+return (i);
 }
 
-/**
- * _strcat - concatenates two strings
- * @dest: the destination buffer
- * @src: the source buffer
- *
- * Return: pointer to destination buffer
- */
-char *_strcat(char *dest, char *src)
-{
-	char *ret = dest;
+#include "my_shell.h"
 
-	while (*dest)
-		dest++;
-	while (*src)
-		*dest++ = *src++;
-	*dest = *src;
-	return (ret);
+/**
+* env_printer - prints the environment string
+*
+* Return: 0
+*/
+void env_printer(void)
+{
+int g = 0;
+char **ern = environ;
+
+while (ern[g])
+{
+write(STDOUT_FILENO, (const void *)ern[g], strlen(ern[g]));
+write(STDOUT_FILENO, "\n", 1);
+g++;
+}
 }
